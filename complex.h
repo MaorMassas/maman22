@@ -8,11 +8,11 @@ typedef struct complex{
 
 complex *A,*B,*C,*D,*E,F;
 
-read_mat(double real,double image);
-print_comp(complex X);
-add_comp(complex X,complex Y);
-sub_comp(complex X,complex Y);
-mult_comp_real(complex X,double real);
-mult_comp_img(complex X,double image);
-mult_comp_comp(complex X,complex Y);
-abs_comp(complex X);
+void read_comp(complex *X,double *real,double *image);
+void print_comp(complex *X);
+void add_comp(complex *X,complex *Y);
+complex sub_comp(complex *X,complex *Y);
+complex mult_comp_real(complex *X,double *real);
+complex mult_comp_img(complex *X,double *image);
+complex mult_comp_comp(complex *X,complex *Y);
+complex abs_comp(complex *X);
