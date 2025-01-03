@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <math.h>
 
-void read_comp(complex *X, double *real,double *image)
+void read_comp(complex *X, const double *real,const double *image)
 {
     X->real = *real;
     X->image = *image;
@@ -31,7 +31,7 @@ complex sub_comp(complex *X,complex *Y)
     print_comp(&tmp);
 }
 
-complex mult_comp_real(complex *X,double *real)
+complex mult_comp_real(complex *X,const double *real)
 {
     complex tmp;
     tmp.real = X->real * *real;
@@ -40,7 +40,7 @@ complex mult_comp_real(complex *X,double *real)
     print_comp(&tmp);
 }
 
-complex mult_comp_img(complex *X,double *image)
+complex mult_comp_img(complex *X,const double *image)
 {
     complex tmp;
     tmp.image = X->image * *image;
