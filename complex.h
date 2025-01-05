@@ -1,18 +1,19 @@
-#include <stdio.h>
+#ifndef COMPLEX_H
+#define COMPLEX_H
 
-
-typedef struct complex{
+typedef struct complex {
     double real;
     double image;
-}complex;
+} complex;
 
-complex *A,*B,*C,*D,*E,F;
+/* Function prototypes */
+void read_comp(complex *X, const double *real, const double *image);
+void print_comp(const complex *X);
+complex add_comp(const complex *X, const complex *Y);
+complex sub_comp(const complex *X, const complex *Y);
+complex mult_comp_real(const complex *X, const double *real);
+complex mult_comp_img(const complex *X, const double *image);
+complex mult_comp_comp(const complex *X, const complex *Y);
+double abs_comp(const complex *X);
 
-void read_comp(complex *X,const double *real,const double *image);
-void print_comp(complex *X);
-void add_comp(complex *X,complex *Y);
-complex sub_comp(complex *X,complex *Y);
-complex mult_comp_real(complex *X,const double *real);
-complex mult_comp_img(complex *X,const double *image);
-complex mult_comp_comp(complex *X,complex *Y);
-complex abs_comp(complex *X);
+#endif

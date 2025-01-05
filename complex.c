@@ -2,66 +2,50 @@
 #include <stdio.h>
 #include <math.h>
 
-void read_comp(complex *X, const double *real,const double *image)
-{
+void read_comp(complex *X, const double *real, const double *image) {
     X->real = *real;
     X->image = *image;
 }
 
-void print_comp(complex *X)
-{
-    printf("%.2f + (%.2f)i",X->real,X->image);
+void print_comp(const complex *X) {
+    printf("%.2f + (%.2f)i\n", X->real, X->image);
 }
 
-void add_comp(complex *X,complex *Y)
-{
-    complex tmp;
-    tmp.real = X->real + Y->real;
-    tmp.image = X->image + Y->image;
-
-    print_comp(&tmp);
+complex add_comp(const complex *X, const complex *Y) {
+    complex result;
+    result.real = X->real + Y->real;
+    result.image = X->image + Y->image;
+    return result;
 }
 
-complex sub_comp(complex *X,complex *Y)
-{
-    complex tmp;
-    tmp.real = X->real - Y->real;
-    tmp.image = X->image - Y->image;
-
-    print_comp(&tmp);
+complex sub_comp(const complex *X, const complex *Y) {
+    complex result;
+    result.real = X->real - Y->real;
+    result.image = X->image - Y->image;
+    return result;
 }
 
-complex mult_comp_real(complex *X,const double *real)
-{
-    complex tmp;
-    tmp.real = X->real * *real;
-    tmp.image = X->image;
-
-    print_comp(&tmp);
+complex mult_comp_real(const complex *X, const double *real) {
+    complex result;
+    result.real = X->real * (*real);
+    result.image = X->image * (*real);
+    return result;
 }
 
-complex mult_comp_img(complex *X,const double *image)
-{
-    complex tmp;
-    tmp.image = X->image * *image;
-    tmp.real = X->real;
-
-    print_comp(&tmp);
+complex mult_comp_img(const complex *X, const double *image) {
+    complex result;
+    result.real = -X->image * (*image);
+    result.image = X->real * (*image);
+    return result;
 }
 
-complex mult_comp_comp(complex *X,complex *Y)
-{
-    complex tmp;
-    tmp.real = X->real * Y->real;
-    tmp.image = X->image * Y->image;
-
-    print_comp(&tmp);
+complex mult_comp_comp(const complex *X, const complex *Y) {
+    complex result;
+    result.real = (X->real * Y->real) - (X->image * Y->image);
+    result.image = (X->real * Y->image) + (X->image * Y->real);
+    return result;
 }
 
-complex abs_comp(complex *X)
-{
-    double result;
-    result = sqrt(pow(X->image,2) + pow(X->real,2));
-
-    printf("The result of abs is: %.2f\n", result);
+double abs_comp(const complex *X) {
+    return sqrt((X->real * X->real) + (X->image * X->image));
 }
