@@ -1,0 +1,13 @@
+read_comp H, 2.5, 3.1
+read_comp A 2.5 3.1
+read_comp A, , 3.1
+read_comp A, 2.5,
+print_comp A, B
+print_comp D
+mult_comp_real B 2.0
+mult_comp_img C, two
+sub_comp X, Y
+abs_comp Z
+mult_comp_real , B
+read_comp A, 3.5, -4,
+stop extra

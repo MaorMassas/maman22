@@ -8,18 +8,10 @@ int main(void) {
 
     printf("Complex Numbers Calculator\n");
 
-    while (1) {
-        printf("Enter command: ");
-        if (fgets(input, sizeof(input), stdin) == NULL) {
-            printf("Error reading input\n");
-            continue;
-        }
-
-        /* Remove trailing newline character */
+    while (fgets(input, sizeof(input), stdin) != NULL) {
         newline = strchr(input, '\n');
         if (newline) *newline = '\0';
 
-        /* Handle the command */
         handle_command(input);
     }
 
