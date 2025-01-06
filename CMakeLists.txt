@@ -9,4 +9,6 @@ add_executable(maman22
         complex.c
         complex.h
         mycomp.c
-        README.md)
+        README.md
+        commands.c
+        commands.h)
