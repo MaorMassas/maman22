@@ -7,7 +7,7 @@
 complex A, B, C, D, E, F;
 
 /* פונקציה לניקוי שורות קלט */
-void clear_input_buffer() {
+void clear_input_buffer(void) {
     int c;
     while ((c = getchar()) != '\n' && c != EOF) {
         /* ממשיך לקרוא עד סוף השורה */
@@ -16,11 +16,10 @@ void clear_input_buffer() {
 
 /* פונקציה לפענוח פקודות */
 void handle_command(char *command) {
-    char name[10];
     double real, imag;
     char variable, variable2;
     complex *var1 = NULL, *var2 = NULL;
-    complex result; // משתנה זמני לאחסון התוצאות
+    complex result; /* משתנה זמני לאחסון התוצאות */
 
     /* בדיקת הפקודה */
     if (sscanf(command, "read_comp %c , %lf , %lf", &variable, &real, &imag) == 3) {
@@ -72,7 +71,7 @@ void handle_command(char *command) {
                 printf("Undefined complex variable\n");
                 return;
         }
-        result = add_comp(var1, var2); // שימוש במשתנה זמני
+        result = add_comp(var1, var2); /* שימוש במשתנה זמני */
         print_comp(&result);
     } else if (sscanf(command, "sub_comp %c , %c", &variable, &variable2) == 2) {
         switch (variable) {
@@ -97,7 +96,7 @@ void handle_command(char *command) {
                 printf("Undefined complex variable\n");
                 return;
         }
-        result = sub_comp(var1, var2); // שימוש במשתנה זמני
+        result = sub_comp(var1, var2); /* שימוש במשתנה זמני */
         print_comp(&result);
     } else if (strncmp(command, "stop", 4) == 0) {
         printf("Program stopped\n");
@@ -107,8 +106,9 @@ void handle_command(char *command) {
     }
 }
 
-int main() {
+int main(void) {
     char input[100];
+    char *newline;
 
     printf("Complex Numbers Calculator\n");
     while (1) {
@@ -119,7 +119,7 @@ int main() {
         }
 
         /* הסרת תווי רווח ותווים לבנים נוספים */
-        char *newline = strchr(input, '\n');
+        newline = strchr(input, '\n');
         if (newline) *newline = '\0';
 
         /* ניתוח הפקודה */
